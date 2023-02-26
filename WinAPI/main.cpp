@@ -1,7 +1,7 @@
-#include <Windows.h>
+п»ї#include <Windows.h>
 #include "resource.h"
 
-CONST CHAR g_sz_DEFAUL_LOGIN_MESSAGE[] = "Введите имя пользователя";
+CONST CHAR g_sz_DEFAUL_LOGIN_MESSAGE[] = "Р’РІРµРґРёС‚Рµ РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ";
 //g - Global
 //sz - String zero
 BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
@@ -17,12 +17,12 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, IN
 {
 
 #ifdef MESSAGE_BOX
-	MessageBox(NULL, "Привет, мир!", "Hello", MB_YESNOCANCEL | MB_ICONINFORMATION | MB_HELP | MB_SYSTEMMODAL);
-	//NULL - родительское окно, NULL значит отсутствует.
-	//"Привет мир" - сообщение
-	//"Hello" - заголовок окна
-	//MB_OK - флаги, определяющие набор кнопок и значёк окна
-	//Флаги - это биты, показывающие что включено, а что нет.  
+	MessageBox(NULL, "РџСЂРёРІРµС‚, РјРёСЂ!", "Hello", MB_YESNOCANCEL | MB_ICONINFORMATION | MB_HELP | MB_SYSTEMMODAL);
+	//NULL - СЂРѕРґРёС‚РµР»СЊСЃРєРѕРµ РѕРєРЅРѕ, NULL Р·РЅР°С‡РёС‚ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚.
+	//"РџСЂРёРІРµС‚ РјРёСЂ" - СЃРѕРѕР±С‰РµРЅРёРµ
+	//"Hello" - Р·Р°РіРѕР»РѕРІРѕРє РѕРєРЅР°
+	//MB_OK - С„Р»Р°РіРё, РѕРїСЂРµРґРµР»СЏСЋС‰РёРµ РЅР°Р±РѕСЂ РєРЅРѕРїРѕРє Рё Р·РЅР°С‡С‘Рє РѕРєРЅР°
+	//Р¤Р»Р°РіРё - СЌС‚Рѕ Р±РёС‚С‹, РїРѕРєР°Р·С‹РІР°СЋС‰РёРµ С‡С‚Рѕ РІРєР»СЋС‡РµРЅРѕ, Р° С‡С‚Рѕ РЅРµС‚.  
 #endif // MESSAGE_BOX
 	DialogBoxParam(hInstance, MAKEINTRESOURCE(IDD_DIALOG1), NULL, DlgProc, 0);
 	return 0;
@@ -32,7 +32,7 @@ BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	switch (uMsg)
 	{
-	case WM_INITDIALOG:// Отрабатывает при запуске окна и может создавать элементы окна
+	case WM_INITDIALOG:// РћС‚СЂР°Р±Р°С‚С‹РІР°РµС‚ РїСЂРё Р·Р°РїСѓСЃРєРµ РѕРєРЅР° Рё РјРѕР¶РµС‚ СЃРѕР·РґР°РІР°С‚СЊ СЌР»РµРјРµРЅС‚С‹ РѕРєРЅР°
 	{
 		HICON hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_ICON1));
 		SendMessage(hwnd, WM_SETICON, 0, (LPARAM)hIcon);
@@ -41,7 +41,7 @@ BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		SendMessage(hEditLogin, WM_SETTEXT, 0, (LPARAM)g_sz_DEFAUL_LOGIN_MESSAGE);
 	}
 	break;
-	case WM_COMMAND:// Обрабатывает сообщения нажатия на кнопки и т.д.
+	case WM_COMMAND:// РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕРѕР±С‰РµРЅРёСЏ РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєРё Рё С‚.Рґ.
 
 		switch (LOWORD(wParam))
 		{
@@ -75,7 +75,7 @@ BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			SendMessage(hEditPassword, WM_SETTEXT, 0, (LPARAM)sz_buffer);
 		}
 		break;
-		case IDOK: MessageBox(hwnd, "Была нажата кнопка ОК", "Info", MB_OK | MB_ICONINFORMATION);
+		case IDOK: MessageBox(hwnd, "Р‘С‹Р»Р° РЅР°Р¶Р°С‚Р° РєРЅРѕРїРєР° РћРљ", "Info", MB_OK | MB_ICONINFORMATION);
 			break;
 		case IDCANCEL: EndDialog(hwnd, 0);
 			break;
