@@ -19,10 +19,10 @@ BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
 	case WM_INITDIALOG:
 	{
-		HWND hCombo = GetDlgItem(hwnd, IDC_LIST1);
+		HWND hList = GetDlgItem(hwnd, IDC_LIST1);
 		for (int i = 0; i < sizeof(g_sz_STRING) / sizeof(g_sz_STRING[0]); i++)
 		{
-			SendMessage(hCombo, LB_ADDSTRING, 0, (LPARAM)g_sz_STRING[i]);
+			SendMessage(hList, LB_ADDSTRING, 0, (LPARAM)g_sz_STRING[i]);
 		}
 	}
 	break;
@@ -31,13 +31,13 @@ BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		CONST INT SIZE = 256;
 		CHAR sz_buffer[SIZE] = {};
 		CHAR sz_message[SIZE] = {};
-		HWND hCombo = GetDlgItem(hwnd, IDC_LIST1);
+		HWND hList = GetDlgItem(hwnd, IDC_LIST1);
 		switch (LOWORD(wParam))
 		{
 		case IDOK:
 		{
-			int i = SendMessage(hCombo, LB_GETCURSEL, 0, 0);
-			SendMessage(hCombo, LB_GETTEXT, i, (LPARAM)sz_buffer);
+			int i = SendMessage(hList, LB_GETCURSEL, 0, 0);
+			SendMessage(hList, LB_GETTEXT, i, (LPARAM)sz_buffer);
 			sprintf(sz_message, "Вы выбрали пункт N%i, со значением %s", i, sz_buffer);
 			MessageBox(hwnd, sz_message, "Info", MB_OK | MB_ICONINFORMATION);
 		}
